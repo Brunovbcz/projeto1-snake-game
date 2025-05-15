@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Snake Game</title>
+</head>
+<body>
+    <div class="main-menu">
+        <h1>Snake<br>Game</h1>
+
+        <button class="main-buttons" id="play">Jogar</button>
+        <button class="main-buttons" id="customize">Personalizar</button>
+        <button class="main-buttons" id="leave">Sair</button>
+        
+        <div class="bottom-btns">
+            <button class="bottom-buttons" id="setting"></button>
+            <button class="bottom-buttons" id="how-to-play"></button>
+        </div>
+
+        <h3><a href="https://github.com/Brunovbcz" target="new">By Bruno Villas</a></h3>
+    </div>
+
+    <div class="setting-menu">
+        <div class="side-menu">
+            <div class="exit-button" id="exit-setting"></div>
+            <button class="setting-button" id="grid">Grade</button>
+            <button class="setting-button" id="game-options">Opções de Jogo</button>
+            <button class="setting-button" id="sound">Som</button>
+        </div>
+
+        <div class="container">
+            <div class="grid-settings">
+                <h1>Configurações da Grade</h1>
+                <h1 class="nh1" style="display: none;">Não é possível zerar o jogo com colisões nessas configurações de grade</h1>
+
+                <div class="slider" id="colums-slider">
+                    <label for="slider">Colunas:</label>
+                    <input type="range" id="l-slider" min="7" max="20" value="14">
+                    <span id="l-slider-value">14</span> 
+                </div>
+
+                <div class="slider" id="rows-slider">
+                    <label for="slider">Linhas:</label>
+                    <input type="range" id="r-slider" min="7" max="20" value="11">
+                    <span id="r-slider-value">11</span>
+                </div>
+
+                <div class="canvas-parent">
+                    <canvas class="grid-canvas"></canvas>
+                </div>
+                
+            </div>
+
+            <div class="game-options">
+                <h1>Configurações do Jogo</h1>
+                <br><br>
+                <div class="slider" id="speed-slider">
+                    <label for="slider">Velocidade:</label>
+                    <input type="range" id="s-slider" min="1" max="25" value="15">
+                    <span id="s-slider-value">15</span>
+                </div>
+                <br><br><br>
+                <div class="slider" id="fruits-slider">
+                    <label for="slider">Número de Frutas:</label>
+                    <input type="range" id="f-slider" min="1" max="5" value="1">
+                    <span id="f-slider-value">1</span>
+                </div>
+                <br><br><br>
+                
+                <div class="gamemode-datalist">
+                    <label for="mode">Modo de Jogo:</label>
+                    
+                    <select id="mode">
+                        <option value="colision">Com Colisão</option>
+                        <option value="non-colision">Sem Colisão</option>     
+                    </select>   
+                </div>
+                
+            </div>
+
+            <div class="audio-settings">
+                <h1>Configurações do Áudio</h1>
+                <br><br>
+                <div class="slider" id="audio-slider">
+                    <label for="slider">Volume do jogo:</label>
+                    <input type="range" id="a-slider" min="0" max="100" value="100">
+                    <span id="audio-slider-value">100</span>
+                </div>
+                <br><br><br>
+
+                <div class="slider" id="music-slider">
+                    <label for="slider">Volume da música:</label>
+                    <input type="range" id="m-slider" min="0" max="100" value="100">
+                    <span id="music-slider-value">100</span>
+                </div>
+                <br><br><br>
+                
+                <div class="music-datalist">
+                    <label for="music-type">Música:</label>
+
+                    <select id="m-type">
+                        <option value="music1">Musica 1</option>
+                        <option value="music2">Musica 2</option>
+                        <option value="music3">Musica 3</option>
+                    </select>
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <div class="how-to-play-menu">
+        <div class="exit-button" id="exit-htp"></div>
+        <h1>Como Jogar</h1>
+
+        <div class="game-text">
+           <li>Controles do jogo
+                <br>
+                <a>Use as teclas WASD ou ↑ ↓ ← → para movimentar a cobrinha.</a>
+                <br>
+                <a>Não é possivel mover a cobrinha na direção oposta, ou seja, se ela está indo para a direita não é possível ir diretamente para a esquerda.</a>
+           </li>
+           <br><br>
+           <li>Objetivo
+                <br>
+                <a>Comer as frutas que aparecem no mapa.</a>
+                <br>
+                <a>Evitar colidir com a borda ou com a própria cobrinha.</a>
+           </li>
+           <br><br>
+           <li>Como o jogo funciona
+                <br>
+                <a>Você começa com uma cobrinha pequena.</a>
+                <br>
+                <a>Quando ela come uma fruta, ela cresce.</a>
+                <br>
+                <a>Quanto mais ela cresce, mais difícil fica controlar e evitar colisões.</a>
+                <br>
+                <a>O jogo termina se você crescer até a cobinha preencher todo o tabuleiro, ou se a cobrinha bater em si mesma ou na parede.</a>
+           </li>
+           <br><br>
+           <li>Dicas para jogar bem
+                <br>
+                <a>Planeje seus movimentos com antecedência.</a>
+                <br>
+                <a>Tente manter a cobrinha mais no centro do mapa pra ter mais opções de fuga.</a>
+                <br>
+                <a>Quando estiver maior, evite cruzar o próprio caminho. Pense como se estivesse desenhando um labirinto.</a>
+           </li>
+           
+        </div>
+        
+    </div>
+
+    <div class="leave-menu">
+        <div class="exit-button" id="exit-leave"></div>
+        <h1>Você tem certeza que deseja sair?</h1>
+        <button class="main-buttons" id="yes">Sim</button>
+        <button class="main-buttons" id="no">Não</button>
+    </div>
+
+    <div class="customize-menu">
+        <div class="side-menu">
+            <div class="exit-button" id="exit-customize"></div>
+
+            <br><br><br><br><br><br>
+            <button class="customize-button" id="fruits-button">Frutas</button>
+            <button class="customize-button" id="eyes-button">Olhos</button>
+            <button class="customize-button" id="colors-button">Cores</button>
+            <button class="customize-button" id="theme-button">Tema</button>
+            <button class="customize-button" id="random-button">Aleatório</button>
+        </div>
+
+        <div class="container">
+            <div class="fruits-menu">
+                <h1>Frutas</h1>
+                <div class="arrow-left" id="l-fruits"></div>
+                <img src="contents/images/fruits/apple.png" class="fruit-menu-img">
+                <div class="arrow-right" id="r-fruits"></div>
+            </div>
+
+            <div class="eyes-menu">
+                <h1>Olhos</h1>
+                <div class="arrow-left" id="l-eyes"></div>
+                <img src="contents/images/snake/eyes/var1.png" class="eye-menu-img">
+                <div class="arrow-right" id="r-eyes"></div>
+            </div>
+
+            <div class="colors-menu">
+                <h1>Cores</h1>
+                <div class="arrow-left" id="l-colors"></div>
+                <canvas class="snake-canvas"></canvas>
+                <div class="arrow-right" id="r-colors"></div>
+            </div>
+
+            <div class="theme-menu">
+                <h1>Tema</h1>
+                <div class="arrow-left" id="l-themes"></div>
+                <span>Clássico</span>
+                <div class="arrow-right" id="r-themes"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-menu">
+        <div class="background-game">
+            <div class="exit-button" id="exit-game-menu"></div>
+            <img class="fruit-img">
+            <h1 class="fruit-counter">0</h1>
+            <img class="trophy" src="contents/images/trophy.png">
+            <h1 class="trophy-counter">0</h1>
+
+            <div class="game-canvas-parent">
+              <canvas class="game-canvas"></canvas>  
+            </div>
+        </div>   
+    </div>
+
+    <div class="game-over-menu">
+        <div class="background">
+            <h1></h1>
+            <h2>frutas comidas:</h2>
+
+            <button class="main-buttons" id="restart">Jogar de novo</button>
+            <button class="main-buttons" id="menu">menu</button>
+        </div>
+    </div>
+
+    <script src="scripts/script.js"></script>
+    <script src="scripts/settingsHandler.js"></script>
+    <script src="scripts/customizeHandler.js"></script>
+    <script src="scripts/snakeMechanics.js"></script>
+</body>
+</html>
